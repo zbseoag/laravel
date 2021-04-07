@@ -117,7 +117,7 @@ class RedisController {
                 $pipe->set("key:$i", $i);
             }
         });
-        
+
         //发布订阅
         Redis::psubscribe(['*'], function ($message, $channel) {
             echo $message;
