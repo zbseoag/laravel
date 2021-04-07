@@ -2,27 +2,34 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
-{
+class AppServiceProvider extends ServiceProvider {
     /**
      * Register any application services.
-     *
      * @return void
      */
-    public function register()
-    {
+    public function register(){
         //
     }
 
     /**
-     * Bootstrap any application services.
-     *
+     * 引导所有应用的服务
      * @return void
      */
-    public function boot()
-    {
-        //
+    public function boot(){
+        //监听查询事件
+        DB::listen(function ($query) {
+            $query->sql;
+            $query->bindings;
+            $query->time;
+        });
+
+        //定义分页默认视图
+        Paginator::defaultView('view-name');
+        Paginator::defaultSimpleView('view-name');
+        Paginator::useBootstrap();
     }
+
 }
