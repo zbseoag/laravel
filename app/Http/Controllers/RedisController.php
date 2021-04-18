@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-class RedisController {
+class RedisController extends Controller{
 
     /**
      * https://github.com/nrk/predis/wiki/Connection-Parameters

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider {
     /**
@@ -26,10 +28,16 @@ class AppServiceProvider extends ServiceProvider {
             $query->time;
         });
 
+        //模型注册观察者
+        //User::observe(UserObserver::class);
+
         //定义分页默认视图
         Paginator::defaultView('view-name');
         Paginator::defaultSimpleView('view-name');
         Paginator::useBootstrap();
+
+
+        //Schema::defaultStringLength(191);
     }
 
 }
