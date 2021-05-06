@@ -47,4 +47,14 @@ class Post extends Model{
         return 'email';
     }
 
+    /**
+     * 一对多
+     * 获取博客文章的评论
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'post_id', 'id');
+    }
+
+
 }

@@ -20,9 +20,10 @@ class UserController extends Controller {
 
         $flight = App\Models\Flight::where('number', 'FR 900')->first();
         $flight->number = 'FR 456';
-        $flight->refresh();
+        $flight->refresh();//重新赋值现有模型
         $flight->number; // "FR 900"
 
+        //过滤已经取消的
         $flights = $flights->reject(function ($flight) {
             return $flight->cancelled;
         });
