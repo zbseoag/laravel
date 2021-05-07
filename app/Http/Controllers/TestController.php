@@ -6,10 +6,13 @@ use Illuminate\Support\Facades\DB;
 class TestController extends Controller {
 
     public function index(){
-        stop(debug_backtrace());
-        //debug_print_backtrace();
-        //uopz_add_function('foo', function () {echo 'bar';});
-        //User::query()->first();
+
+        $users = User::cursor()->where('id', '>', 3)->take(30)->get();
+
+        foreach ($users as $user) {
+            echo $user->id;
+        }
+
     }
 
 }

@@ -22,7 +22,7 @@ class User extends Authenticatable
     //public $incrementing = true;
     //protected $keyType = 'string';
     //public $timestamps = false;//是否主动维护时间戳
-    //protected $dateFormat = 'U';
+    protected $dateFormat = 'U';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     //protected $connection = 'connection-name';
@@ -79,8 +79,5 @@ class User extends Authenticatable
 
     }
 
-    public function test(){
-        echo 1991;
-    }
 
 }

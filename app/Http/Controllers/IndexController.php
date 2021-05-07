@@ -12,6 +12,12 @@ class IndexController extends Controller {
         $name = Route::currentRouteName();
         $action = Route::currentRouteAction();
         return URL::signedRoute('test', ['user' => 1]);
+
+
+        //debug_print_backtrace();
+        //uopz_add_function('foo', function () {echo 'bar';});
+        //User::query()->first();
+
     }
 
     public function modelFactory(){
