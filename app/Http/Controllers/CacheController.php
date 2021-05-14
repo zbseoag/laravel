@@ -1,17 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Cache\LockTimeoutException;
 
 class CacheController extends Controller
 {
     public function cinfig()
     {
         $file = 'config/cache.php';
-
         Cache::store('redis')->put('key', 'baz', 600); // 10 Minutes
         Cache::get('key', 'default');
         //从数据库或其他外部服务中获取默认值
@@ -19,7 +18,6 @@ class CacheController extends Controller
             return DB::table()->get();
         });
     }
-
 
     public function index()
     {
@@ -55,6 +53,32 @@ class CacheController extends Controller
             $lock->release();
         }
 
+
+
+        $lock = Cache::lock('foo', 10);
+        if ($lock->get()) {
+            // 获取锁定10秒...
+            $lock->release();
+        }
+
+        Cache::lock('foo')->get(function () {
+            // 获取无限期锁并自动释放
+        });
+
+        $lock = Cache::lock('foo', 10);
+        try {
+            $lock->block(5);
+
+            // 等待最多5秒后获取的锁...
+        } catch (LockTimeoutException $e) {
+            // 无法获取锁...
+        } finally {
+            optional($lock)->release();
+        }
+
+        Cache::lock('foo', 10)->block(5, function () {
+            // 等待最多5秒后获取的锁...
+        });
 
     }
 

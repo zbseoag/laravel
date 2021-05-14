@@ -47,6 +47,5 @@ class ModelController extends Controller
             'postcode' => '90001',
         ])->replicate()->fill(['type' => 'billing'])->save();
 
-
     }
 }
