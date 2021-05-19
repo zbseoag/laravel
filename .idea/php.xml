@@ -112,6 +112,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/spatie/array-to-xml" />
       <path value="$PROJECT_DIR$/vendor/looxis/laravel-amazon-mws" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-web-tinker" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">

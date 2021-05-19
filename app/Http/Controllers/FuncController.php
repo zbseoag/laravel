@@ -11,11 +11,14 @@ class FuncController extends Controller
 {
     public function arr(){
 
-        Arr::accessible(new Collection);//检查给定值是否可数组式访问
-        Arr::add($array, $key, $value);//添加元素当元素或借不存在时
-        Arr::collapse(...arr);//合并数组
-        Arr::crossJoin(array1, array2);//交叉连接给定的数组
-        [$keys, $values] = Arr::divide(['name' => 'Desk']);//得到键名和值
+        $array = $array1 = $array2 = [];
+        Arr::accessible(new Collection);//是否数组 或 实现了 ArrayAccess
+
+        Arr::add($array, 'key', 'value');//添加元素当元素或不存在时
+        Arr::collapse($array1, $array2);//合并多个数组或将二维转成一维
+        Arr::crossJoin($array1, $array2);//交叉连接给定的数组
+        [$keys, $values] = Arr::divide(['key1' => 'value2', 'key2'=>'value2']);//得到键名和值
+
         Arr::dot(['products' => ['desk' => ['price' => 100]]]);//多维转一维，键名用 . 拼接
         Arr::except($array, ['price']);//排除指定的键名序列
         Arr::exists($array, 'name');//键是否存在
