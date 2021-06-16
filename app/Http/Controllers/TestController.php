@@ -10,7 +10,10 @@ class TestController extends Controller {
 
     public function index(){
 
-        var_dump(Arr::only(['a'=>1, 'b'=>'2', 'c'=>33], ['a', 'b']));
+        $array = [1,2,3,4];
+        $array = Arr::add($array, 2, 'value');//添加元素当元素或不存在时
+        pp($array);
+
         //$users = User::cursor()->where('id', '>', 3)->take(30)->get();
 
     }

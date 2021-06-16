@@ -7,8 +7,9 @@ use App\Models\User;
 
 class ModelController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
+        
         User::fill(['name' => 'Flight 22']);
 
         //查找可生成一个实例
